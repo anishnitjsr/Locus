@@ -19,7 +19,7 @@ export default function Home() {
 
   const fetchSeats = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/seats');
+      const res = await axios.get('https://locus-9ecn.onrender.com/api/seats');
       setSeats(res.data);
       setLoading(false);
     } catch (error) {
@@ -41,7 +41,7 @@ export default function Home() {
     try {
       await Promise.all(
         selectedSeats.map(seatNumber =>
-          axios.put(`http://localhost:5000/api/seats/${seatNumber}/book`)
+          axios.put(`https://locus-9ecn.onrender.com/api/seats/${seatNumber}/book`)
         )
       );
       toast.success('Booking successful!');
@@ -54,7 +54,7 @@ export default function Home() {
 
   const handleCancel = async (seatNumber) => {
     try {
-      await axios.put(`http://localhost:5000/api/seats/${seatNumber}/cancel`);
+      await axios.put(`https://locus-9ecn.onrender.com/api/seats/${seatNumber}/cancel`);
       toast.success('Cancellation successful!');
       fetchSeats();
     } catch (error) {
